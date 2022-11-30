@@ -1,0 +1,81 @@
+:root {
+  --theme-bg-color: #FFF9;
+  --theme-bg2-color: #FFFF;
+  --theme-fg-color: #000F;
+  --theme-accent1-color: #696969; }
+
+.toast {
+  box-sizing: border-box;
+  padding: 0.75rem;
+  background-color: var(--theme-bg2-color);
+  border: 1px solid var(--theme-fg-color);
+  color: var(--theme-fg-color);
+  border-radius: 0.25em;
+  position: relative;
+  cursor: pointer;
+  transition: transform 300ms ease-in-out;
+  overflow: hidden; }
+
+.toast-container[data-position$="-right"] .toast {
+  transform: translateX(110%); }
+
+.toast-container[data-position$="-left"] .toast {
+  transform: translateX(-110%); }
+
+.toast-container[data-position="top-center"] .toast {
+  transform: translateY(-100vh); }
+
+.toast-container[data-position="bottom-center"] .toast {
+  transform: translateY(100vh); }
+
+.toast-container .toast.show {
+  transform: translate(0, 0); }
+
+.toast.progress::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: calc(100% * var(--progress));
+  background: var(--theme-fg-color);
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+.toast.can-close::after {
+  content: "\00D7";
+  position: absolute;
+  top: 2px;
+  right: 5px; }
+
+.toast-container {
+  position: fixed;
+  margin: 10px;
+  width: 250px;
+  min-height: 0rem;
+  max-height: 100rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; }
+
+.toast-container[data-position^="top-"] {
+  top: 0; }
+
+.toast-container[data-position^="bottom-"] {
+  bottom: 0; }
+
+.toast-container[data-position$="-right"] {
+  right: 0; }
+
+.toast-container[data-position$="-left"] {
+  left: 0; }
+
+.toast-container[data-position$="-center"] {
+  left: 50%;
+  transform: translateX(-50%); }
+
+.toastErr {
+  background: #ffbbbb; }
+
+.toastWarn {
+  background: #ffd25e; }
